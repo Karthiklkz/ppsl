@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>She said YES! 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Dancing+Script:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts-bg"></div>
+    <div class="heart-confetti" id="petals-bg"></div>
+
+    <div class="container yes-container">
+        <h1 class="yes-title">She said YES! 🎉💖</h1>
+
+        <div class="divider"></div>
+
+        <div class="gif-container">
+            <img id="cat-gif" src="https://media.tenor.com/eNHbizSfVb0AAAAj/lovemode-cute.gif" alt="happy celebration">
+        </div>
+
+        <p class="yes-message">
+            My dearest <span class="name-highlight">Ranshiya</span>, 🌹<br><br>
+            You just made me the luckiest person in the world.<br>
+            Every moment with you feels like a dream I never want to wake up from. 💫<br><br>
+            Thank you for choosing me. I promise to make every day<br>as beautiful as you are. 🥰
+        </p>
+    </div>
+
+    <audio id="bg-music" loop autoplay muted>
+        <source src="beabadoobee - Glue Song (Lyrics).mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🎵</button>
+
+    <script>
+        const music = document.getElementById('bg-music')
+        let musicPlaying = true
+        music.muted = true
+        music.volume = 0.3
+        music.play().then(() => { music.muted = false }).catch(() => {
+            document.addEventListener('click', () => {
+                music.muted = false
+                music.play().catch(() => {})
+            }, { once: true })
+        })
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause(); musicPlaying = false
+                document.getElementById('music-toggle').textContent = '🔇'
+            } else {
+                music.muted = false; music.play(); musicPlaying = true
+                document.getElementById('music-toggle').textContent = '🎵'
+            }
+        }
+
+        function spawnPetal() {
+            const el = document.createElement('div')
+            el.classList.add('petal')
+            el.textContent = ['💖','💗','💕','🌹','✨','💝','🌸'][Math.floor(Math.random()*7)]
+            el.style.left = Math.random() * 100 + 'vw'
+            el.style.animationDuration = (3 + Math.random() * 4) + 's'
+            el.style.fontSize = (1 + Math.random() * 1.5) + 'rem'
+            document.getElementById('petals-bg').appendChild(el)
+            el.addEventListener('animationend', () => el.remove())
+        }
+        setInterval(spawnPetal, 280)
+    </script>
+</body>
+</html>

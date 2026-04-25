@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Dancing+Script:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rose:       #e63f6e;
+    --deep-rose:  #b5174b;
+    --blush:      #ffd6e0;
+    --wine:       #7b1040;
+    --cream:      #fff4f7;
+    --gold:       #f4c2c2;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: radial-gradient(ellipse at 20% 20%, #4a0a2a 0%, #1a0014 40%, #0d000a 100%);
+    position: relative;
+}
+
+/* ── Stars ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(1.5px 1.5px at 10% 12%, rgba(255,220,230,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 45%, rgba(255,200,220,0.7) 0%, transparent 100%),
+        radial-gradient(2px 2px at 35% 8%, rgba(255,230,240,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 30%, rgba(255,210,230,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 65% 18%, rgba(255,220,235,0.85) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 55%, rgba(255,200,225,0.7) 0%, transparent 100%),
+        radial-gradient(2px 2px at 88% 10%, rgba(255,230,240,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 70%, rgba(255,210,225,0.65) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 92% 75%, rgba(255,220,235,0.75) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 80%, rgba(255,200,220,0.6) 0%, transparent 100%),
+        radial-gradient(2px 2px at 15% 92%, rgba(255,230,242,0.85) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 88%, rgba(255,210,228,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,195,215,0.55) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 55% 65%, rgba(255,225,238,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82% 35%, rgba(255,205,222,0.65) 0%, transparent 100%);
+    animation: twinkle 6s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0%   { opacity: 0.6; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* ── Floating petals ── */
+#petals-bg, .hearts-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -60px;
+    animation: fallPetal linear forwards;
+    user-select: none;
+    opacity: 0.85;
+}
+
+@keyframes fallPetal {
+    0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 0.85; }
+    80%  { opacity: 0.6; }
+    100% { transform: translateY(110vh) rotate(360deg) scale(0.6); opacity: 0; }
+}
+
+/* ── Glowing ring behind card ── */
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 44px 32px 36px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255, 155, 190, 0.22);
+    border-radius: 28px;
+    box-shadow:
+        0 0 0 1px rgba(255,100,150,0.12),
+        0 0 60px rgba(180, 20, 80, 0.35),
+        0 20px 60px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,200,220,0.18);
+    max-width: 440px;
+    width: 90vw;
+    animation: cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+}
+
+/* ── Heading ── */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 4px;
+    text-shadow:
+        0 0 18px rgba(255, 100, 150, 0.9),
+        0 0 40px rgba(255, 60, 120, 0.5),
+        2px 2px 0px rgba(180, 20, 70, 0.4);
+    animation: glowPulse 3s ease-in-out infinite;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(255, 190, 210, 0.75);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+@keyframes glowPulse {
+    0%,100% { text-shadow: 0 0 18px rgba(255,100,150,0.9), 0 0 40px rgba(255,60,120,0.5), 2px 2px 0 rgba(180,20,70,.4); }
+    50%      { text-shadow: 0 0 28px rgba(255,130,170,1),   0 0 60px rgba(255,80,140,0.7), 2px 2px 0 rgba(180,20,70,.4); }
+}
+
+/* ── Love quote ── */
+#love-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(255, 200, 215, 0.8);
+    margin-bottom: 10px;
+    min-height: 1.2rem;
+    letter-spacing: 0.3px;
+    transition: opacity 0.4s ease;
+}
+
+/* ── GIF container ── */
+.gif-container {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#cat-gif {
+    width: 148px;
+    height: 148px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 80, 140, 0.5));
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+/* ── Buttons ── */
+.buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+#yes-btn {
+    background: linear-gradient(135deg, #e6395a, #c0185e, #8b0037);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 1.35rem;
+    font-weight: 900;
+    font-family: 'Dancing Script', cursive;
+    padding: 13px 36px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow:
+        0 6px 24px rgba(200, 20, 80, 0.6),
+        0 0 0 1px rgba(255, 150, 180, 0.2),
+        inset 0 1px 0 rgba(255, 200, 220, 0.2);
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+#yes-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+    border-radius: inherit;
+}
+
+#yes-btn:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 12px 36px rgba(200, 20, 80, 0.75), 0 0 0 2px rgba(255,150,180,0.35), inset 0 1px 0 rgba(255,200,220,0.2);
+}
+
+#yes-btn:active {
+    transform: scale(0.97);
+}
+
+#no-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 200, 215, 0.85);
+    border: 1px solid rgba(255, 130, 160, 0.3);
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    padding: 11px 26px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, left 0.25s ease, top 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+#no-btn:hover {
+    background: rgba(255, 80, 120, 0.15);
+    border-color: rgba(255, 130, 160, 0.5);
+    color: #ffd6e0;
+}
+
+/* ── Tease toast ── */
+#tease-toast {
+    margin-top: 14px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255, 200, 215, 0.9);
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    min-height: 1.5rem;
+}
+
+#tease-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Divider ── */
+.divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,150,180,0.5), transparent);
+    margin: 10px auto;
+}
+
+/* ── Music toggle ── */
+#music-toggle {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: rgba(120, 10, 50, 0.7);
+    border: 1px solid rgba(255, 130, 160, 0.3);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(150, 10, 60, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 100;
+}
+
+#music-toggle:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 24px rgba(200, 20, 80, 0.65);
+}
+
+/* ── YES PAGE ── */
+.yes-container .yes-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #fff;
+    animation: bounceTitle 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes bounceTitle {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-10px) scale(1.03); }
+}
+
+.yes-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: rgba(255, 215, 230, 0.92);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    margin-top: 16px;
+    animation: fadeIn 1s ease 0.6s both;
+}
+
+.name-highlight {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffb3cc;
+    text-shadow: 0 0 16px rgba(255, 100, 150, 0.8), 0 0 32px rgba(255, 60, 120, 0.4);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.yes-container #cat-gif {
+    width: 190px;
+    height: 190px;
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — mobile (≤ 480px)
+   ══════════════════════════════════ */
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start;
+        padding: 18px 0 24px;
+    }
+
+    .container {
+        padding: 36px 20px 28px;
+        border-radius: 22px;
+        width: 92vw;
+        animation: none; /* disable float so card stays still while scrolling */
+    }
+
+    h1 {
+        font-size: 1.7rem;
+        margin-bottom: 2px;
+    }
+
+    .subtitle {
+        font-size: 0.72rem;
+        margin-bottom: 6px;
+    }
+
+    #love-quote {
+        font-size: 0.74rem;
+        margin-bottom: 6px;
+    }
+
+    .divider {
+        margin: 7px auto;
+    }
+
+    #cat-gif {
+        width: 118px;
+        height: 118px;
+    }
+
+    .gif-container {
+        margin: 8px auto;
+    }
+
+    .buttons {
+        gap: 10px;
+        margin-top: 14px;
+    }
+
+    #yes-btn {
+        font-size: 1.15rem;
+        padding: 11px 28px;
+    }
+
+    #no-btn {
+        font-size: 0.88rem;
+        padding: 9px 20px;
+    }
+
+    #tease-toast {
+        font-size: 0.82rem;
+        margin-top: 10px;
+    }
+
+    /* Yes page */
+    .yes-container .yes-title {
+        font-size: 2rem;
+    }
+
+    .yes-container #cat-gif {
+        width: 148px;
+        height: 148px;
+    }
+
+    .yes-message {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-top: 12px;
+    }
+
+    .name-highlight {
+        font-size: 1.15rem;
+    }
+
+    #music-toggle {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        bottom: 14px;
+        right: 14px;
+    }
+}
+
+/* ── Confetti area ── */
+.heart-confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}

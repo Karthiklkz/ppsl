@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine? 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Dancing+Script:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts-bg"></div>
+    <div id="petals-bg"></div>
+
+    <div class="container">
+        <h1>Will you be my Valentine? 💕</h1>
+        <p class="subtitle">— a question from the heart, just for you —</p>
+
+        <div class="divider"></div>
+
+        <p id="love-quote">"Every love story is beautiful, but ours is my favourite 🌹"</p>
+
+        <div class="gif-container">
+            <img id="cat-gif" src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif" alt="cute character">
+        </div>
+
+        <div class="buttons">
+            <button id="yes-btn" onclick="handleYesClick()">Yes 💖</button>
+            <button id="no-btn" onclick="handleNoClick()">No</button>
+        </div>
+        <div id="tease-toast"></div>
+    </div>
+
+    <audio id="bg-music" loop autoplay muted>
+        <source src="beabadoobee - Glue Song (Lyrics).mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🎵</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
